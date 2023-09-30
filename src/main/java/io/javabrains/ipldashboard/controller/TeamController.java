@@ -25,7 +25,7 @@ public class TeamController {
     @GetMapping("/team/{teamName}")
     public Team getTeam(@PathVariable String teamName){
        Team team= this.teamRepository.findByTeamName(teamName) ;
-       team.setMatches(this.matchRepository.findLatestMatchedByTeam(teamName, 4)); //get last 4 mmatches
+       team.setMatches(this.matchRepository.findLatestMatchedByTeam(teamName, 4)); //get last 4 mmatches using pageable
        return team;
 
     }
