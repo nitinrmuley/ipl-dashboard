@@ -16,7 +16,7 @@ export const TeamPage = () => {
     };
 
     fetchMatches();
-  }, []); // Pass an empty dependency array to run the effect only once on component mount
+  }, []); // this Pass an empty dependency array to run the effect only once on component mount
 
   return (
     <div className="TeamPage">
