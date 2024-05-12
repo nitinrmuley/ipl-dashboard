@@ -13,7 +13,7 @@ export const TeamPage = () => {
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/team/${teamName}`);
+        const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -42,10 +42,10 @@ export const TeamPage = () => {
         Wins / Losses
       
         <PieChart
-      data={[
-       { title: 'Wins', value: team.totalWins, color: '#4da375' },
-       { title: 'Losses', value: team.totalMatches - team.totalWins, color: '#E86A4F' },
-     ]}
+  data={[
+    { title: 'Wins', value: isNaN(team.totalWins) ? 0 : team.totalWins, color: '#4da375' },
+    { title: 'Losses', value: isNaN(team.totalMatches) || team.totalMatches === 0 ? 0 : (team.totalMatches - team.totalWins), color: '#E86A4F' },
+  ]}
 />;
       </div>
 
